@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Basketball Score</string>
+    <string name="local">Local</string>
+    <string name="visitor">Visitor</string>
+    <string name="minusOne">-1</string>
+    <string name="plusOne">+1</string>
+    <string name="plusTwo">+2</string>
+    <string name="basketball_ball">basketball ball</string>
+    <string name="localWins">Local Wins!</string>
+    <string name="visitorWins">Visitor Wins!</string>
+    <string name="draw">Draw 😕</string>
+    <string name="reset">Reset</string>
+</resources>

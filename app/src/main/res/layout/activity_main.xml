@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/localText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="@string/local"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/localMinus1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="72dp"
+            android:text="@string/minusOne"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/localText" />
+
+        <Button
+            android:id="@+id/localPlus1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/plusOne"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/localPlus2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/plusTwo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/localPlus1" />
+
+
+        <Button
+            android:id="@+id/visitorPlus1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/plusOne"
+            app:layout_constraintBottom_toTopOf="@+id/visitorPlus2"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/visitorMinus1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginBottom="72dp"
+            android:text="@string/minusOne"
+            app:layout_constraintBottom_toTopOf="@+id/visitorText"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/localScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="72dp"
+            android:text="0"
+            android:textSize="48sp"
+            app:layout_constraintStart_toEndOf="@+id/localMinus1"
+            app:layout_constraintTop_toBottomOf="@+id/localText" />
+
+        <TextView
+            android:id="@+id/visitorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            android:text="@string/visitor"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/visitorPlus2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="120dp"
+            android:text="@string/plusTwo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/restart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:backgroundTint="#BDBDBD"
+            android:text="@string/reset"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/visitorMinus1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/localMinus1"
+            app:layout_constraintVertical_bias="0.501" />
+
+        <Button
+            android:id="@+id/results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="#BDBDBD"
+            android:text=">"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/visitorPlus1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/localPlus2" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="108dp"
+            android:layout_height="113dp"
+            app:layout_constraintBottom_toTopOf="@+id/visitorScore"
+            app:layout_constraintEnd_toStartOf="@+id/results"
+            app:layout_constraintStart_toEndOf="@+id/restart"
+            app:layout_constraintTop_toBottomOf="@+id/localScore"
+            tools:srcCompat="@drawable/basket"
+            android:contentDescription="@string/basketball_ball" />
+
+        <TextView
+            android:id="@+id/visitorScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:layout_marginBottom="72dp"
+            android:text="0"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toTopOf="@+id/visitorText"
+            app:layout_constraintStart_toEndOf="@+id/visitorMinus1" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
