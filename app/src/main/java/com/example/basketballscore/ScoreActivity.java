@@ -30,6 +30,9 @@ public class ScoreActivity extends AppCompatActivity {
         int localScoreInt = Integer.parseInt(localScore);
         int visitorScoreInt = Integer.parseInt(visitorScore);
 
+        if(localScoreInt > visitorScoreInt) binding.resultText.setText(R.string.localWins);
+        else if(localScoreInt < visitorScoreInt) binding.resultText.setText(R.string.visitorWins);
+        else binding.resultText.setText(R.string.draw);
 
 
     }
