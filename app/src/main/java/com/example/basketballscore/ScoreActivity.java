@@ -21,18 +21,17 @@ public class ScoreActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Bundle extras = getIntent().getExtras();
-        String localScore = extras.getString(LOCAL);
-        String visitorScore = extras.getString(VISITOR);
 
-        String result = localScore + " - " + visitorScore;
-        binding.resultScoreText.setText(result);
+        int localScore = Integer.parseInt(extras.getString(LOCAL));
+        int visitorScore = Integer.parseInt(extras.getString(VISITOR));
 
-        int localScoreInt = Integer.parseInt(localScore);
-        int visitorScoreInt = Integer.parseInt(visitorScore);
+        binding.resultScoreText.setText(localScore + " - " + visitorScore);
 
-        if(localScoreInt > visitorScoreInt) binding.resultText.setText(R.string.localWins);
-        else if(localScoreInt < visitorScoreInt) binding.resultText.setText(R.string.visitorWins);
-        else binding.resultText.setText(R.string.draw);
+        if(localScore > visitorScore){
+            binding.resultText.setText(R.string.localWins); }
+        else if(localScore < visitorScore) {
+            binding.resultText.setText(R.string.visitorWins); }
+        else { binding.resultText.setText(R.string.draw); }
 
 
     }

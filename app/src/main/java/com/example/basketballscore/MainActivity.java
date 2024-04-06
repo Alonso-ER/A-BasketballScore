@@ -1,6 +1,7 @@
 package com.example.basketballscore;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import com.example.basketballscore.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private MainViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,62 +19,53 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+
+        viewModel.getLocalScore().observe(this, localScoreInt -> {
+            binding.localScore.setText(String.valueOf(localScoreInt));
+        });
+
+        viewModel.getVisitorScore().observe(this, visitorScoreInt -> {
+            binding.visitorScore.setText(String.valueOf(visitorScoreInt));
+        });
+
+        setUpButtons();
+
+    }
+
+    private void setUpButtons() {
         binding.localPlus1.setOnClickListener( v -> {
-            int score = Integer.parseInt(binding.localScore.getText().toString());
-            score++;
-            binding.localScore.setText(String.valueOf(score));
+            viewModel.increaseLocalPlusOne();
         });
 
         binding.localPlus2.setOnClickListener( v -> {
-            int score = Integer.parseInt(binding.localScore.getText().toString());
-            score += 2;
-            binding.localScore.setText(String.valueOf(score));
+            viewModel.increaseLocalPlusTwo();
         });
 
         binding.localMinus1.setOnClickListener( v -> {
-            int score = Integer.parseInt(binding.localScore.getText().toString());
-            if( score > 0 ){
-                score--;
-                binding.localScore.setText(String.valueOf(score));
-            } else {
-                score = 0;
-            }
-             });
+            viewModel.decreaseLocal();
+        });
 
         binding.visitorPlus1.setOnClickListener( v -> {
-            int score = Integer.parseInt(binding.visitorScore.getText().toString());
-            score++;
-            binding.visitorScore.setText(String.valueOf(score));
+            viewModel.increaseVisitorPlusOne();
         });
 
         binding.visitorPlus2.setOnClickListener( v -> {
-            int score = Integer.parseInt(binding.visitorScore.getText().toString());
-            score += 2;
-            binding.visitorScore.setText(String.valueOf(score));
+            viewModel.increaseVisitorPlusTwo();
         });
 
         binding.visitorMinus1.setOnClickListener( v -> {
-            int score = Integer.parseInt(binding.visitorScore.getText().toString());
-            if (score > 0) {
-                score--;
-                binding.visitorScore.setText(String.valueOf(score));
-            } else {
-                score = 0;
-            }
+            viewModel.decreaseVisitor();
         });
 
         binding.results.setOnClickListener( v -> {
-            int localScore = Integer.parseInt(binding.localScore.getText().toString());
-            int visitorScore = Integer.parseInt(binding.visitorScore.getText().toString());
-            updateResults(localScore, visitorScore);
+            updateResults(viewModel.getLocalScore().getValue(), viewModel.getVisitorScore().getValue());
         });
 
         binding.restart.setOnClickListener( v -> {
-            binding.localScore.setText("0");
-            binding.visitorScore.setText("0");
-            binding.results.setText("");
+            viewModel.resetScores();
         });
-    }
+    };
     private void updateResults(
             int local,
             int visitor
@@ -83,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(ScoreActivity.VISITOR, String.valueOf(visitor));
         startActivity(intent);
     }
+
+
+
 
 
 
